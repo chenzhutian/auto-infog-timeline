@@ -65,6 +65,14 @@ video {
     margin-bottom: 4rem;
 }
 
+.teaser-content .authors {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
 .teaser .jump-btn-group {
     display: flex;
     justify-content: space-around;
