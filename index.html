@@ -25,24 +25,35 @@
             </h1>
             <div class="authors">
                 <span>
-                    <a href="//chenzhutian.org" target="_blank">Zhutian Chen</a>, <a href="//www.microsoft.com/en-us/research/people/wangyun/" target="_blank">Yun Wang</a>, <a href="//wangqianwen0418.github.io/" target="_blank">Qianwen Wang</a>, <a href="//yong-wang.org/" target="_blank">Yong Wang</a>, and <a href="//huamin.org" target="_blank">Huamin Qu</a>
+                    <a href="//chenzhutian.org" target="_blank">Zhutian Chen</a>, <a
+                        href="//www.microsoft.com/en-us/research/people/wangyun/" target="_blank">Yun Wang</a>, <a
+                        href="//wangqianwen0418.github.io/" target="_blank">Qianwen Wang</a>, <a href="//yong-wang.org/"
+                        target="_blank">Yong Wang</a>, and <a href="//huamin.org" target="_blank">Huamin Qu</a>
                 </span>
                 <span>
                     <a href="//ieeevis.org/year/2019/info/papers-sessions" target="_blank">IEEE VIS 2019</a>
                 </span>
             </div>
             <div class="jump-btn-group">
-                <!-- <a href="#abstract" class="jump-btn">Abstract</a> -->
-                <a href="#labels" class="jump-btn">Labels</a>
-                <a href="#architecture" class="jump-btn">Architecture</a>
-                <a href="#training" class="jump-btn">Training</a>
-                <a href="#examples" class="jump-btn">Examples</a>
-                <a href="//chenzhutian.org/projects/2019_autotimeline/paper.pdf" class="jump-btn" target="_blank">Paper</a>
-                <!-- <a href="#materials" class="jump-btn">Materials</a> -->
+                <a href="#pipeline" class="jump-btn">Pipeline</a>
+                <a href="#dataset" class="jump-btn">Dataset</a>
+                <a href="#Code" class="jump-btn">Code</a>
+                <a href="//chenzhutian.org/projects/2019_autotimeline/paper.pdf" class="jump-btn"
+                    target="_blank">Paper</a>
+                <div class="dropdown">
+                    <a class="dropbtn jump-btn">suppl. materials</a>
+                    <div class="dropdown-content">
+                            <a href="#labels" class="jump-btn">Labels</a>
+                            <a href="#architecture" class="jump-btn">Architecture</a>
+                            <a href="#training" class="jump-btn">Training</a>
+                            <a href="#examples" class="jump-btn">Examples</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     <div class="content" style="width:80vw;max-width: 1024px;">
+        
         <section id="abstract" class="abstract">
             <h2>Abstract</h2>
             Designers need to consider not only perceptual effectiveness but also visual styles when creating an
@@ -72,684 +83,698 @@
             effectively extract extensible templates from real-world timeline infographics.
         </section>
         <hr />
+
         <section id="labels" class="labels">
-            <h2>Labels of elements</h2>
-            <figure style="text-align: center;
-            width: 70%;
-            margin: 0 auto 20px auto;">
-                <img src="figs/34_labels.png" alt='missing' />
-                <figcaption>Categories of elements in a timeline infographic. The <em>event mark</em>, <em>annotation
-                        mark</em>,
-                    and <em>main body</em> can be reused, while others need to be updated.</figcaption>
-            </figure>
-
-            <p>
-                We use two datasets to train the model and evaluate our approach.
-                The first one (referred to as \(D_1\)) is a synthetic dataset.
-                We extended <a href="https://github.com/Microsoft/timelinestoryteller">TimelineStoryteller</a>,
-                a timeline authoring tool,
-                to generate \(D_1\), covering all types of timeline.
-                The second dataset (referred to as \(D_2\)) consists of real-world timelines,
-                collected from <a href="https://www.google.com/imghp">Google Image</a>,
-                <a href="https://www.pinterest.com">Pinterest</a>, and
-                <a href="https://www.freepik.com">FreePicker</a>
-                by using the search keywords <em>timeline infographics</em> and <em>infographic timeline</em>.
-                \(D_2\) has more diverse styles, especially for marks, and it covers most common types of timeline.
-            </p>
-
-            <p>
-                To identify the categories of elements in a timeline,
-                four of the coauthors independently reviewed all the timelines in our two datasets.
-                Each of them iteratively summarized a set of
-                mutually exclusive categories that can be used to depict elements in a timeline infographic.
-                Gathering the reviews resulted in six categories:
-            </p>
-
-
-            <table id="tb_categories" style="width:90%;">
-                <thead>
-                    <tr>
-                        <th style="width:157px;">Category</th>
-                        <th>Explaination</th>
-                        <th>Label type</th>
-                        <th>Occurrence</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-
-            <p>
-                For the elements that need to be reused, we labeled them with their bboxes and masks, which can be used
-                to segment these elements from the original infographic for reusing.
-                For those that need to be updated, we only labeled them with their bbox, since the contents of these
-                elements need to be changed with updated data.
-            </p>
-
-            <p>
-                We also identified other guide elements (<em>e.g.</em>, the text elements or marks in axes and legends)
-                in our datasets.
-                However, these elements only exist in \(D_1\).
-                Thus, we decided to exclude them in our study.
-            </p>
-
+            <h2 class="collapsible">Labels of elements</h2>
+            <div class="section-content">
+                <figure style="text-align: center;
+                width: 70%;
+                margin: 0 auto 20px auto;">
+                    <img src="figs/34_labels.png" alt='missing' />
+                    <figcaption>Categories of elements in a timeline infographic. The <em>event mark</em>, <em>annotation
+                            mark</em>,
+                        and <em>main body</em> can be reused, while others need to be updated.</figcaption>
+                </figure>
+    
+                <p>
+                    We use two datasets to train the model and evaluate our approach.
+                    The first one (referred to as \(D_1\)) is a synthetic dataset.
+                    We extended <a href="https://github.com/Microsoft/timelinestoryteller">TimelineStoryteller</a>,
+                    a timeline authoring tool,
+                    to generate \(D_1\), covering all types of timeline.
+                    The second dataset (referred to as \(D_2\)) consists of real-world timelines,
+                    collected from <a href="https://www.google.com/imghp">Google Image</a>,
+                    <a href="https://www.pinterest.com">Pinterest</a>, and
+                    <a href="https://www.freepik.com">FreePicker</a>
+                    by using the search keywords <em>timeline infographics</em> and <em>infographic timeline</em>.
+                    \(D_2\) has more diverse styles, especially for marks, and it covers most common types of timeline.
+                </p>
+    
+                <p>
+                    To identify the categories of elements in a timeline,
+                    four of the coauthors independently reviewed all the timelines in our two datasets.
+                    Each of them iteratively summarized a set of
+                    mutually exclusive categories that can be used to depict elements in a timeline infographic.
+                    Gathering the reviews resulted in six categories:
+                </p>
+    
+    
+                <table id="tb_categories" style="width:90%;">
+                    <thead>
+                        <tr>
+                            <th style="width:157px;">Category</th>
+                            <th>Explaination</th>
+                            <th>Label type</th>
+                            <th>Occurrence</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+    
+                <p>
+                    For the elements that need to be reused, we labeled them with their bboxes and masks, which can be used
+                    to segment these elements from the original infographic for reusing.
+                    For those that need to be updated, we only labeled them with their bbox, since the contents of these
+                    elements need to be changed with updated data.
+                </p>
+    
+                <p>
+                    We also identified other guide elements (<em>e.g.</em>, the text elements or marks in axes and legends)
+                    in our datasets.
+                    However, these elements only exist in \(D_1\).
+                    Thus, we decided to exclude them in our study.
+                </p>
+            </div>
         </section>
         <hr />
+
         <section id="architecture" class="architecture">
-            <h2>Architecture</h2>
-            <figure style="text-align: center;
-            width: 60%;
-            margin: 0 auto 20px auto;">
-                <img src="figs/41_architecture.png" alt='missing' />
-                <!-- <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> -->
-            </figure>
-            The above figure presents an overview of the complete architecture of our model that can parse both global
-            and local information simultaneously.
-            We further present the details of <a href="#archit_resnext"
-                style="color:#5B9BD5;"><strong>ResNeXt-FPN</strong></a>,
-            <a href="#archit_class" style="color:#5B9BD5;"><strong>Class Head</strong></a>,
-            <a href="#archit_rpn" style="color:#70AD47;"><strong>RPN</strong></a>,
-            <a href="#archit_box" style="color:#70AD47;"><strong>Box Head</strong></a>, and
-            <a href="#archit_mask" style="color:#70AD47;"><strong>Mask Head</strong></a>, respectively.
-
-            <h4 id="archit_resnext">1. ResNeXt-FPN</h4>
-            <a data-fancybox="gallery" href="figs/archit/resnext_fpn.jpg">
-                <img style="width: 90%; margin-left: 20%" src="figs/archit/resnext_fpn.jpg" alt='missing' />
-            </a>
-            <p>
-                The figure above shows the configurations of the ResNeXt-FPN, which is used to extract multi-scale image
-                features, in our model.
-                ResNeXt <cite>ref_resnext</cite> achieves state-of-the-art performances in many computer vision tasks,
-                we use ResNeXt to extract the features of a timeline infographic.
-                It takes a 3-channel image (<em>i.e.</em>, RGB) as input
-                and uses one stem block and four groups of bottleneck block to extract features.
-                The multipliers of bottleneck blocks are for ResNeXt-50.
-                As for ResNeXt-101, the bottleneck block of the stage \(4\) is repeated \(23\) times rather than \(6\)
-                times in ResNeXt-50.
-                The four groups of bottleneck block output
-                a feature hierarchy with a pyramidal shape
-                that consists of feature maps with 256, 512, 1024, 2048 channels, respectively.
-            </p>
-
-            <p>
-                We then pass the feature maps into Feature Pyramid Network <cite>ref_fpn</cite> (FPN).
-                FPN is a top-down architecture and can build semantically strong feature maps at multiple scales using
-                the feature maps from ResNeXt.
-                FPN makes our model scale-invariant and able to handle images of vastly different resolution.
-                It outputs four feature maps with \(256d\) (<em>i.e.</em>, 256 channels).
-            </p>
-
-            <p>
-                Please note that the input image can be any resolution (<em>i.e.</em>, \(width \times height \)).
-                Thus, in the figures, we only annotate the input/output with resolutions in parentheses for those
-                requiring fixed size resolutions.
-            </p>
-
-            <h4 id="archit_class">2. Class Head</h4>
-            <a data-fancybox="gallery" href="figs/archit/class_head.jpg">
-                <img style="width: 45%; margin-left: 12.5%;" src="figs/archit/class_head.jpg" alt='missing' />
-            </a>
-            <p>
-                We use Class Head that consists of 
-                two sibling fully connected (FC) layers to classify the type and
-                orientation of a timeline infographic
-                by consuming the feature maps from ResNeXt-FPN.
-                2D average pooling is applied for the features before they are passed to FC layers, following the well-established <a href="https://github.com/pytorch/vision">torchvision</a> package.
-                One problem here is which feature map should be used in Class Head,
-                given ResNeXt-FPN outputs four \(256d\) feature maps.
-                Considering that the task is to classify the entire image,
-                we choose the last feature map that contains the strongest semantics and the largest scale.
-                Another alternative is to use the feature map from ResNeXt (<em>i.e.</em>, the \(2048d\) one).
-                We used this feature map in our initial architecture to parse the global information.
-                However, after extending our architecture to parse the local extra,
-                we found out that using the \(256d\) features from FPN
-                can stabilize the training and improve the performance.
-                We regard this as an advantage of consistent gradients from the local and global information for the
-                back propagation.
-            </p>
-
-            <h4 id="archit_rpn">3. RPN</h4>
-            <a data-fancybox="gallery" href="figs/archit/rpn.jpg">
-                <img style="width: 70%; margin-left: 14%;" src="figs/archit/rpn.jpg" alt='missing' />
-            </a>
-            <p>
-                To parse the local information,
-                we first feed the feature maps from the ResNeXt-FPN into a Region Proposal Network <cite>ref_fpn</cite>
-                (RPN)
-                to propose regions that may contain elements in a timeline image.
-                RPN is a fully convolutional network (FCN) that simultaneously predicts element locations (by bbox)
-                and objectness probability (<em>i.e.</em>, whether there is an object within the bbox) in an image.
-                It takes the four feature maps from ResNeXt-FPN as inputs
-                and generates anchors (a set of reference bboxes) of various sizes
-                for each feature map (<em>e.g.</em>, \(32^2, 64^2, 128^2, 256^2\)
-                <!-- for the \(1\text{st}, 2\text{ed}, 3\text{rd}\), and \(4\text{th}\)  -->
-                for the \(1\)st, \(2\)ed, \(3\)rd, and \(4\)th
-                feature map, respectively).
-                For each grid in each feature map, RPN uses an anchor generator to generate three anchors of three
-                aspect ratios (<em>i.e.</em>, \(1:2, 1:1, 2:1\)).
-                For each three anchors center at the same grid,
-                RPN outputs a \(3d\) vector to predict their objectness probability
-                and a \(3 \times 4d\) vector to predict their regression offsets.
-                A region proposal creator will then process these outputs together with anchors
-                to remove bboxes without elements and crop bboxes exceeding the boundary of the image.
-                The remaining bboxes are then be used to extract regions of interest (RoIs) from the feature maps using
-                a RoIAlign layer.
-                Besides, the RoIAlign layer normalize each RoI to fixed sizes
-                for passing it to two heads (\(7 \times 7\) for Box Head and \(14 \times 14\) for Mask Head).
-            </p>
-
-            <h4 id="archit_box">4. Box Head</h4>
-            <a data-fancybox="gallery" href="figs/archit/box_head.jpg">
-                <img style="width: 45%; margin-left: 13.5%;" src="figs/archit/box_head.jpg" alt='missing' />
-            </a>
-            <p>
-                The Box Head follows the design in <cite>ref_fast_rcnn</cite>
-                to use two sibling FC layers to classify the category
-                and regress the bbox of the element within a RoI.
-                It takes a \(256d\) feature of resolution \(7 \times 7 \) from RPN as the input
-                and two FC layers to reduce the feature to \(1024d\).
-                It then uses two sibling FC layers to output: 1) a \(7d\) vector that can be used to compute the
-                category over 6 element categories and 1 "catch all" background,
-                and 2) a \(6 \times 4d\) vector that represents 6 bbox regressions,
-                each of which is a four-value tuple \(t = (t_x, t_y, t_w, t_h)\) for a category.
-                We use the parameterization for \(t\) given in <cite>ref_fast_rcnn</cite>,
-                in which \(t\)
-                specifies a
-                scale-invariant translation and log-space height/width shift
-                relative to an RoI.
-            </p>
-
-            <h4 id="archit_mask">5. Mask Head</h4>
-            <a data-fancybox="gallery" href="figs/archit/mask_head.jpg">
-                <img style="width: 40%; margin-left: 16%;" src="figs/archit/mask_head.jpg" alt='missing' />
-            </a>
-            <p>
-                The Mask Head follows the design in <cite>ref_mask_rcnn</cite>
-                to use an FCN for predicting the pixels of the element within a RoI.
-                Specifically,
-                it takes a \(256d\) feature of resolution \(14 \times 14 \) from RPN as the input
-                and uses 4 Conv2D layers of \(3 \times 3\) kernels, 1 transposed Conv2D layer,
-                and 1 Conv2D of \(1 \times 1\) kernel to output 6 binary masks of resolution \(28 \times 28\), one for
-                each of the 6 categories.
-                The binary masks indicate whether a pixel inside the RoI belongs to the element or not.
-            </p>
-
-        </section>
-        <hr />
-        <section id="training" class="training">
-            <h2>Training</h2>
-            <h4 id="train_loss">1. Loss Functions</h4>
-            <p>
-                Our model is optimized for a multi-task loss function that consists of seven losses:
-                \begin{equation}
-                \begin{split}
-                \mathcal{L} &= \lambda_1 \mathcal{L}_{{Image}_{type}} + \lambda_2 \mathcal{L}_{{Image}_{orientation}} \\
-                & + \lambda_3 \mathcal{L}_{{RoI}_{objectness}} + \lambda_4 \mathcal{L}_{{RoI}_{bbox}} \\
-                & + \lambda_5 \mathcal{L}_{{DT}_{type}} + \lambda_6 \mathcal{L}_{{DT}_{bbox}} + \lambda_7
-                \mathcal{L}_{{DT}_{mask}}
-                \end{split}
-                \end{equation}
-            </p>
-
-            <table id="tb_losses" style="width:50%;">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Target</th>
-                        <th>Type</th>
-                        <th>Loss</th>
-                        <th>Weight</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-
-            <p>The summary of these losses is presented in the above table.
-                The hyper-parameters \(\lambda\) control the balance between these seven task losses.
-                We note that the losses defined on the entire image (<em>i.e.</em>, \(\mathcal{L}_{{Image}_{type}}\) and
-                \(\mathcal{L}_{{Image}_{orientation}}\))
-                are not on the same scale with other losses (which are defined on the local regions of the image).
-                Therefore, we empirically set a smaller \(\lambda\) to them (<em>i.e.</em>, 0.15)
-                and follow previous works <cite>ref_fast_rcnn</cite><cite>ref_rpn</cite><cite>ref_mask_rcnn</cite> to
-                keep other losses as 1.
-                The detail computation of each loss is described as follows:
-            </p>
-
-            <div class="list_losses">
-                <span>\(\mathcal{L}_{{Image}_{type}}\)</span>
-                <p>
-                    The \(\mathcal{L}_{{Image}_{type}}\), defined on the entire image,
-                    is computed using the output on the timeline type from <a href="#archit_class"
-                        style="color:#5B9BD5;"><strong>Class Head</strong></a>.
-                    The output is a discrete probability distribution \(p = (p_1, ..., p_{10})\) over 10 timeline types
-                    computed by a softmax function.
-                    The timeline type classification loss is a log loss for the true type \(u:
-                    \mathcal{L}_{{Image}_{type}}(p, u) = -\log{p}_{u}\).
-                </p>
-
-                <span>\(\mathcal{L}_{{Image}_{orientation}}\)</span>
-                <p>
-                    The \(\mathcal{L}_{{Image}_{orientation}}\), defined on the entire image,
-                    is computed using the output on the timeline orientation from <a href="#archit_class"
-                        style="color:#5B9BD5;"><strong>Class Head</strong></a>.
-                    The output is a discrete probability distribution \(p = (p_1, p_2, p_3)\) over 3 timeline
-                    orientations computed by a softmax function.
-                    The timeline orientation classification loss is a log loss for the true orientation \(u:
-                    \mathcal{L}_{{Image}_{orientation}}(p, u) = -\log{p}_{u}\).
-                </p>
-
-                <span>\(\mathcal{L}_{{RoI}_{objectness}}\)</span>
-                <p>
-                    The \(\mathcal{L}_{{RoI}_{objectness}}\), defined on each RoI,
-                    is computed using the output on the objectness from <a href="#archit_rpn"
-                        style="color:#70AD47;"><strong>RPN</strong></a>.
-                    For each RoI, <a href="#archit_rpn" style="color:#70AD47;"><strong>RPN</strong></a> uses a softmax
-                    function to compute a
-                    probability \(p\) to predict whether the RoI contains objects or not (<em>i.e.</em>, foreground
-                    <em>vs.</em> background).
-                    The ground truth \(p^*\) is 1 if a RoI is foreground, and is 0 if it is background.
-                    The objectness classification loss is a log loss over two classes:
-                    \(\mathcal{L}_{{RoI}_{objectness}}(p, p^*) = - p^* \log p - (1 - p^*) \log (1 - p)\).
-                    We refer the reader to <cite>ref_rpn</cite> for more details.
-                </p>
-
-                <span>\(\mathcal{L}_{{RoI}_{bbox}}\)</span>
-                <p>
-                    The \(\mathcal{L}_{{RoI}_{bbox}}\), defined on each RoI,
-                    is computed using the output on the bbox from <a href="#archit_rpn"
-                        style="color:#70AD47;"><strong>RPN</strong></a>.
-                    For each RoI, <a href="#archit_rpn" style="color:#70AD47;"><strong>RPN</strong></a> outputs bbox
-                    correction \(t = (t_x, t_y, t_w, t_h)\)
-                    of the anchor associated with the RoI. The regression loss is computed using Smooth \(L_1\) on the
-                    prediction \(t\) and ground truth \(t^* \):
-                    \begin{equation}
-                    \mathcal{L}_{{RoI}_{bbox}}(t, t^*) = p^* L_1^\text{smooth}(t - t^*),
-                    \end{equation}
-                    where \( L_1^\text{smooth}(x) = \begin{cases}0.5 x^2 & \text{if} \vert x \vert < 1 \\ \vert x \vert
-                        - 0.5 & \text{otherwise} \end{cases}\), and the term \(p^*\) indicates that the loss is
-                        activated only for foreground RoI (\(p^*=1\)) and is disabled otherwise (\(p^*=0\)). We refer
-                        the reader to <cite>ref_rpn</cite> for more details.
-                </p>
-                </li>
-
-                <span>\(\mathcal{L}_{{DT}_{type}}\)</span>
-                <p>
-                    The \(\mathcal{L}_{{DT}_{type}}\), defined on each detection (<em>i.e.</em>, DT),
-                    is computed using the output on the element category from <a href="#archit_box"
-                        style="color:#70AD47;"><strong>Box Head</strong></a>.
-                    For each DT, <a href="#archit_box" style="color:#70AD47;"><strong>Box Head</strong></a> uses a
-                    softmax function to compute a
-                    discrete probability distribution \(p = (p_0, p_1, ..., p_6)\) over six pre-defined element
-                    categories and a "catch all" background.
-                    The element category classification loss is a log loss for the true category \(u:
-                    \mathcal{L}_{{DT}_{type}}(p, u) = -\log{p}_{u}\).
-                </p>
-
-                <span>\(\mathcal{L}_{{DT}_{bbox}}\)</span>
-                <p>
-                    The \(\mathcal{L}_{{DT}_{bbox}}\), defined on each DT,
-                    is computed using the output on the element bbox from <a href="#archit_box"
-                        style="color:#70AD47;"><strong>Box Head</strong></a>.
-                    For each DT,
-                    <a href="#archit_box" style="color:#70AD47;"><strong>Box Head</strong></a> outputs 6 bbox regression
-                    corrections, \(t^k = (t^k_x, t^k_y, t^k_w, t^k_h)\) indexed by \(k\),
-                    one for each of the 6 categories.
-                    We use the parameterization for \(t^k\) given in <cite>ref_fast_rcnn</cite>,
-                    in which \(t^k\) specifies a
-                    scale-invariant translation and log-space height/width shift relative to a region proposal (RoI).
-                    Similar to \(\mathcal{L}_{{RoI}_{bbox}}\), the regression loss \(\mathcal{L}_{{DT}_{bbox}}\)
-                    is also computed using Smooth \(L_1\): \(\mathcal{L}_{{RoI}_{bbox}}(t^u, t^*) = [u > 0]
-                    L_1^\text{smooth}(t^u - t^*) \),
-                    where \(t^u\) is the predicted bbox correction of the true category \(u\) and \(t^*\) is the ground
-                    truth.
-                    The Iverson bracket indicator function
-                    \([u > 0]\) evaluates to 1 when \(u > 0\) and 0 otherwise,
-                    which means the loss is only activated on the foreground predictions (\(p_1\) to \(p_6\)), since the
-                    "catch all" background class is labeled \(u = 0\) by convention.
-                    We refer the reader to <cite>ref_fast_rcnn</cite> for more details.
-                </p>
-
-                <span>\(\mathcal{L}_{{DT}_{mask}}\)</span>
-                <p>
-                    The \(\mathcal{L}_{{DT}_{mask}}\), defined on each DT,
-                    is computed using the output of <a href="#archit_mask" style="color:#70AD47;"><strong>Mask
-                            Head</strong></a>.
-                    For each DT, <a href="#archit_mask" style="color:#70AD47;"><strong>Mask Head</strong></a> outputs 6
-                    binary masks of resolution \(m \times m \) (defined as a hyper parameter),
-                    one for each of the 6 categories. \(\mathcal{L}_{{DT}_{mask}}\) is defined as the average binary
-                    cross-entropy loss over all pixels of a mask.
-                    Besides, for an DT associated with its ground true category \(u\), the loss is only defined in the
-                    \(u\)-th mask (other mask outputs do not contribute to the loss):
-                    \( \mathcal{L}_{{DT}_{mask}} = - [u > 0] \frac{1}{m^2} \sum_{1 \leq i, j \leq m} \big[ p^*_{ij} \log
-                    p^u_{ij} + (1-p^*_{ij}) \log (1- p^u_{ij}) \big] \),
-                    where \(p^*_{ij}\) is the label of a pixel \((i, j)\) in the true mask
-                    and \(p^u_{ij}\) is the predicted label of the same pixel for the true category \(u\); the term \([u
-                    > 0]\) works in the same manner as in \(\mathcal{L}_{{DT}_{bbox}}\).
-                    We refer the reader to <cite>ref_mask_rcnn</cite> for more details.
-                </p>
-            </div>
-
-            <h4 id="train_hyper">2. Hyper parameters</h4>
-            We implemented two types of CNN backbone for our model, namely, ResNeXt-101 and ResNeXt-50.
-            Below are the hyper parameters we used to train our models with ResNeXt-101 and ResNeXt-50, respectively.
-            <pre>
-<code class="yaml">MODEL:
-    META_ARCHITECTURE: "GeneralizedRCNN"
-    WEIGHT: "catalog://ImageNetPretrained/FAIR/20171220/X-101-32x8d"
-    BACKBONE:
-        CONV_BODY: "R-101-FPN"
-        OUT_CHANNELS: 256
-    CLASSIFIER:
-        NUM_CLASSES: 10 
-    CLASSIFIER2:
-        NUM_CLASSES: 3
-    RPN:
-        USE_FPN: True
-        ANCHOR_STRIDE: (4, 8, 16, 32, 64)
-        PRE_NMS_TOP_N_TRAIN: 2000
-        PRE_NMS_TOP_N_TEST: 1000
-        POST_NMS_TOP_N_TEST: 1000
-        FPN_POST_NMS_TOP_N_TEST: 1000
-    ROI_HEADS:
-        USE_FPN: True
-        BATCH_SIZE_PER_IMAGE: 256
-    ROI_BOX_HEAD:
-        POOLER_RESOLUTION: 7
-        POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
-        POOLER_SAMPLING_RATIO: 2
-        FEATURE_EXTRACTOR: "FPN2MLPFeatureExtractor"
-        PREDICTOR: "FPNPredictor"
-        NUM_CLASSES: 7
-    ROI_MASK_HEAD:
-        POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
-        FEATURE_EXTRACTOR: "MaskRCNNFPNFeatureExtractor"
-        PREDICTOR: "MaskRCNNC4Predictor"
-        POOLER_RESOLUTION: 14
-        POOLER_SAMPLING_RATIO: 2
-        EXCLUDE_LABELS: (0, 3)
-        RESOLUTION: 28
-        SHARE_BOX_FEATURE_EXTRACTOR: False
-    RESNETS:
-        STRIDE_IN_1X1: False
-        NUM_GROUPS: 32
-        WIDTH_PER_GROUP: 8
-    MASK_ON: True
-    CLASSIFIER_ON: True 
-    CLASSIFIER2_ON: True
-INPUT:
-    MIN_SIZE_TRAIN: 833
-    MAX_SIZE_TRAIN: 1024
-    MIN_SIZE_TEST: 833 
-    MAX_SIZE_TEST: 1024
-DATALOADER:
-    SIZE_DIVISIBILITY: 32
-    ASPECT_RATIO_GROUPING: False
-SOLVER:
-    BASE_LR: 0.005
-    WEIGHT_DECAY: 0.0001
-    STEPS: (56000, 76000)
-    # Epoch = (MAX_ITER * IMS_PER_BATCH) / #dataset
-    MAX_ITER: 84000
-    IMS_PER_BATCH: 4
-    CHECKPOINT_PERIOD: 10000</code>
-<code class="yaml">MODEL:
-    META_ARCHITECTURE: "GeneralizedRCNN"
-    WEIGHT: "catalog://ImageNetPretrained/MSRA/R-50"
-    BACKBONE:
-        CONV_BODY: "R-50-FPN"
-        OUT_CHANNELS: 256
-    CLASSIFIER:
-        NUM_CLASSES: 10 
-    CLASSIFIER2:
-        NUM_CLASSES: 3
-    RPN:
-        USE_FPN: True
-        ANCHOR_STRIDE: (4, 8, 16, 32, 64)
-        PRE_NMS_TOP_N_TRAIN: 2000
-        PRE_NMS_TOP_N_TEST: 1000
-        POST_NMS_TOP_N_TEST: 1000
-        FPN_POST_NMS_TOP_N_TEST: 1000
-    ROI_HEADS:
-        USE_FPN: True
-        BATCH_SIZE_PER_IMAGE: 256
-    ROI_BOX_HEAD:
-        POOLER_RESOLUTION: 7
-        POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
-        POOLER_SAMPLING_RATIO: 2
-        FEATURE_EXTRACTOR: "FPN2MLPFeatureExtractor"
-        PREDICTOR: "FPNPredictor"
-        NUM_CLASSES: 7
-    ROI_MASK_HEAD:
-        POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
-        FEATURE_EXTRACTOR: "MaskRCNNFPNFeatureExtractor"
-        PREDICTOR: "MaskRCNNC4Predictor"
-        POOLER_RESOLUTION: 14
-        POOLER_SAMPLING_RATIO: 2
-        RESOLUTION: 28
-        SHARE_BOX_FEATURE_EXTRACTOR: False
-    MASK_ON: True
-    CLASSIFIER_ON: True 
-    CLASSIFIER2_ON: True 
-INPUT:
-    MIN_SIZE_TRAIN: 833
-    MAX_SIZE_TRAIN: 1024
-    MIN_SIZE_TEST: 833
-    MAX_SIZE_TEST: 1024
-DATALOADER:
-    SIZE_DIVISIBILITY: 32
-    ASPECT_RATIO_GROUPING: False
-SOLVER:
-    BASE_LR: 0.005
-    WEIGHT_DECAY: 0.0001
-    STEPS: (56000, 76000)
-    # Epoch = (MAX_ITER * IMS_PER_BATCH) / #dataset
-    MAX_ITER: 84000
-    IMS_PER_BATCH: 4 
-    CHECKPOINT_PERIOD: 10000</code>
-</pre>
-        </section>
-
-        <hr />
-        <section id="examples" class="examples">
-            <h2>Examples</h2>
-
-            <h4>1. Examples outputted from the model and refined by <em>DL GrabCut</em>.</h4>
-            <p>
-                After applying <em>Non-Maximum Merging</em> and <em>Redundancy Recover</em>, 
-                we visualize the final predicted category, bbox, and mask of each element on timelines. 
-                We then apply <em>DL GrabCut</em> and convert the timeline infographics to greyscale images for a clear demonstration.
-                Please note that the aliasing of some borders of masks is caused by the rendering method we used
-                (<em>i.e.</em>, the <em><a href="//docs.opencv.org/2.4/modules/imgproc/doc/structural_analysis_and_shape_descriptors.html">findCountor</a></em> in openCV.)
-            </p>
-            <div id="examples_good" class="gallary"></div>
-
-            <h4>2. Supplemental examples</h4>
-            <p>
-                In this section, we provide additional examples from ablation studies
-                to indicate some properties of the model.
-            </p>
-
-            <span class="card-title">Examples of parsing infographics with natural and graphical elements</span>
-            <div class="card-content">
-                <p>
-                    In an infographic, a common practice is to show objects with photos and annotate them with graphical shapes.
-                    Such kind of hybrid components requires a model that considers the characteristics of natural and graphical elements. 
-                    Although our datasets do not include natural elements, 
-                    we are interested in the performance of our model on timelines contain graphical and natural elements. 
-                    Thus, we randomly substitute some graphical marks with photos of animals and then feed them to our model.
-                </p>
-                <div id="examples_hybrid" class="gallary">
-                    <div class="item item-2">
-                            <div class="item-content">
-                        <a data-fancybox="gallery" href="figs/examples/cat_1.jpg">
-                            <img src="figs/examples/cat_1_tn.jpg" alt='missing' /> </a>
-                        <span class="legend">a</span></div>
-                    </div>
-                    <div class="item item-2">
-                            <div class="item-content">
-                        <a data-fancybox="gallery" href="figs/examples/cat_2.jpg">
-                            <img src="figs/examples/cat_2_tn.jpg" alt='missing' /> </a>
-                        <span class="legend">b</span></div>
-                    </div>
+            <h2 class="collapsible">Architecture</h2>
+            <div class="section-content">
+                    <figure style="text-align: center;
+                    width: 60%;
+                    margin: 0 auto 20px auto;">
+                        <img src="figs/41_architecture.png" alt='missing' />
+                        <!-- <figcaption>The complete architecture of our model that can parse both global and local information simultaneously.</figcaption> -->
+                    </figure>
+                    The above figure presents an overview of the complete architecture of our model that can parse both global
+                    and local information simultaneously.
+                    We further present the details of <a href="#archit_resnext"
+                        style="color:#5B9BD5;"><strong>ResNeXt-FPN</strong></a>,
+                    <a href="#archit_class" style="color:#5B9BD5;"><strong>Class Head</strong></a>,
+                    <a href="#archit_rpn" style="color:#70AD47;"><strong>RPN</strong></a>,
+                    <a href="#archit_box" style="color:#70AD47;"><strong>Box Head</strong></a>, and
+                    <a href="#archit_mask" style="color:#70AD47;"><strong>Mask Head</strong></a>, respectively.
+        
+                    <h4 id="archit_resnext">1. ResNeXt-FPN</h4>
+                    <a data-fancybox="gallery" href="figs/archit/resnext_fpn.jpg">
+                        <img style="width: 90%; margin-left: 20%" src="figs/archit/resnext_fpn.jpg" alt='missing' />
+                    </a>
                     <p>
-                        In the <strong>Fig.a</strong> above, we substitute all annotation icons with animal photos
-                        and randomly add additional animal photos for disruption.
-                        The results show that our model can still correctly classify these animals as annotation icons.
-                        We regard this performance as a benefit of the ImageNet pre-trained network. 
+                        The figure above shows the configurations of the ResNeXt-FPN, which is used to extract multi-scale image
+                        features, in our model.
+                        ResNeXt <cite>ref_resnext</cite> achieves state-of-the-art performances in many computer vision tasks,
+                        we use ResNeXt to extract the features of a timeline infographic.
+                        It takes a 3-channel image (<em>i.e.</em>, RGB) as input
+                        and uses one stem block and four groups of bottleneck block to extract features.
+                        The multipliers of bottleneck blocks are for ResNeXt-50.
+                        As for ResNeXt-101, the bottleneck block of the stage \(4\) is repeated \(23\) times rather than \(6\)
+                        times in ResNeXt-50.
+                        The four groups of bottleneck block output
+                        a feature hierarchy with a pyramidal shape
+                        that consists of feature maps with 256, 512, 1024, 2048 channels, respectively.
                     </p>
         
-                    <p style="margin-top:0;">
-                        In the <strong>Fig.b</strong>, we further substitute all event marks with animal photos
-                        to see whether the model can classify them as event marks.
-                        Interestingly, our model can finish the task perfectly:
-                        although the cats look identical,
-                        our model classifies the cats that randomly distributed in the image as annotation marks,
-                        while the cats on the main body as event marks.
+                    <p>
+                        We then pass the feature maps into Feature Pyramid Network <cite>ref_fpn</cite> (FPN).
+                        FPN is a top-down architecture and can build semantically strong feature maps at multiple scales using
+                        the feature maps from ResNeXt.
+                        FPN makes our model scale-invariant and able to handle images of vastly different resolution.
+                        It outputs four feature maps with \(256d\) (<em>i.e.</em>, 256 channels).
                     </p>
-
-                    <div class="item item-1">
-                            <div class="item-content">
-                        <a data-fancybox="gallery" href="figs/examples/cat_3.jpg">
-                            <img src="figs/examples/cat_3_tn.jpg" alt='missing' /> </a>
-                        <span class="legend">c</span></div>
-                    </div>
-                </div>
-    
-                <p>
-                    However, this result does not mean that the model can recognize elements based on their locations and relationships with other elements.
-                    <strong>Figure.c</strong> presents a more general case.
-                    For this infographic, which has a similar representation with a linear timeline,
-                    our model can correctly identify the annotation marks, annotation text, and annotation icons,
-                    but classifies all corncobs in the middle as annotation icons instead of event marks or main body.
-                    This example demonstrates that the DL model 
-                    mainly recognizes elements based on their visual appearance,
-                    rather than their locations and relationships to other elements.
-                    Thus, for the cats on the main body in <strong>Fig.b</strong>,
-                    we conjecture that is the appearances of them together with other elements (<em>e.g.</em>, the main body and annotation marks) around
-                    that help our model to achieve correct classifications.
-                </p>
-    
-                <p>
-                    These examples relate to issues about <strong>networks on images with natural and graphical elements.</strong>
-                    Besides, these examples also involve <strong>translation invariance</strong> <em>vs.</em> <strong>translation variance</strong>
-                    in networks.
-                    Future research is needed to understand these cases further.
-                    We discuss these issues and potential solutions in <strong>Section 7.1</strong> in our paper.
-                </p>
-            </div>
         
-            <span class="card-title">Examples of using tricks to improve the detection results</span>
-            <div class="card-content">
-            <p>
-                Given our work is not aimed at high metric values,
-                we did not optimize our model with bells and whistles,
-                such as comprehensive data augmentation, multi-scale train/test, more advanced loss functions, and other techniques. 
-                Outside the scope of this work, we expect that such improvement skills are applicable to our model.
-                Here we present examples to 
-                demonstrate how our model can be improved with such kind of techniques.
-            </p>
+                    <p>
+                        Please note that the input image can be any resolution (<em>i.e.</em>, \(width \times height \)).
+                        Thus, in the figures, we only annotate the input/output with resolutions in parentheses for those
+                        requiring fixed size resolutions.
+                    </p>
         
-            <div id="examples_scale" class="gallary">
-                <div class="item item-2">
-                        <div class="item-content">
-                    <a data-fancybox="gallery" href="figs/examples/scale_o.jpg">
-                        <img src="figs/examples/scale_o_tn.jpg" alt='missing' /> </a>
-                        <span class="legend">d</span></div>
-                </div>
-                <div class="item item-2">       <div class="item-content">
-                    <a data-fancybox="gallery" href="figs/examples/scale_u.jpg">
-                        <img src="figs/examples/scale_u_tn.jpg" alt='missing' /> </a>
-                        <span class="legend">e</span></div>
-
-                </div>
-                <div class="item item-1">       <div class="item-content">
-                        <a data-fancybox="gallery" href="figs/examples/scale_d.jpg">
-                            <img src="figs/examples/scale_d_tn.jpg" alt='missing' /> </a>
-                            <span class="legend">f</span></div>
-                    </div>
-            </div>
-
-            <p>
-                The <strong>Fig.d</strong> shows a timeline infographic 
-                and <strong>Fig.e</strong> presents the detection results of our model.
-                As shown in <strong>Fig.e</strong>,
-                the annotation marks are not covered by the bboxes.
-                Our investigation reveals that this is because the sizes of the annotation marks are too large with respect to the image size.
-                There is no such kind of unusual large annotation marks in the training set.
-                Thus, the model tends to use a relatively small bbox to cover the annotation marks.
-                In <strong>Fig.f</strong>, we apply a multi-scale testing technique
-                by extending the image (resizing also works) to reduce the relative size of the annotation marks.
-                The model then can detect the marks correctly.
-                Multi-scale training, which is a data augmentation strategy.
-                is another method to tackle this kind of cases.
-                Simply put, we can resize the training images
-                to cover diverse sizes of annotation marks.
-            </p>
-
-            <div id="examples_bw" class="gallary" style="justify-content: space-around;">
-                <div class="item item-2">       <div class="item-content">
-                    <a data-fancybox="gallery" href="figs/examples/bw_u_o.jpg">
-                        <img src="figs/examples/bw_u_o_tn.jpg" alt='missing' /> </a>
-                        <span class="legend">h</span></div>
-                </div>
-                <div class="item item-2">       <div class="item-content">
-                    <a data-fancybox="gallery" href="figs/examples/bw_u.jpg">
-                        <img src="figs/examples/bw_u_tn.jpg" alt='missing' /> </a>
-                        <span class="legend">i</span></div>
-                </div>
-
-                <div class="item item-2">       <div class="item-content">
-                    <a data-fancybox="gallery" href="figs/examples/bw_d_o.jpg">
-                        <img src="figs/examples/bw_d_o_tn.jpg" alt='missing' /> </a>
-                        <span class="legend">j</span></div>
-                </div>
-                <div class="item item-2">       <div class="item-content">
-                    <a data-fancybox="gallery" href="figs/examples/bw_d.jpg">
-                        <img src="figs/examples/bw_d_tn.jpg" alt='missing' /> </a>
-                        <span class="legend">k</span></div>
-                </div>
-            </div>
-            <p>
-                <strong>Figure.h</strong> is a greyscale timeline and <strong>Fig.i</strong> shows the detection results.
-                As shown in the enlarging views in the top of <strong>Fig.i</strong>,
-                some event marks, whose colors are similar to the background color, 
-                are undetected or incorrectly detected as a part of the annotation text.
-                We discover that the lacking of greyscale training data is the major reason,
-                because in timelines with RGB channels it is unusual to have event marks with colors similar to the background color. 
-                Thus, we randomly add some colors to the undetected event marks (<strong>Fig.j</strong>).
-                The model successfully detects these marks as our expected (<strong>Fig.k</strong>).
-                To handle this kind of cases,
-                a data augmentation strategy that converts RGB images to greyscale images 
-                can be applied in training samples.
-            </p>
-
-            <p>Both these two representative cases (<em>i.e.</em>, the large size and greyscale examples)
-                can be addressed by data augmentation techniques.
-                Besides the data aspect, 
-                there are other enhancement techniques for networks, 
-                such as OHEM<cite>ref_OHEM</cite>, focal loss<cite>ref_focal_loss</cite>, soft-NMS<cite>ref_soft_nms</cite>, <em>etc.</em>
-                We leave this improvement techniques for future work.
-            </p>
+                    <h4 id="archit_class">2. Class Head</h4>
+                    <a data-fancybox="gallery" href="figs/archit/class_head.jpg">
+                        <img style="width: 45%; margin-left: 12.5%;" src="figs/archit/class_head.jpg" alt='missing' />
+                    </a>
+                    <p>
+                        We use Class Head that consists of
+                        two sibling fully connected (FC) layers to classify the type and
+                        orientation of a timeline infographic
+                        by consuming the feature maps from ResNeXt-FPN.
+                        2D average pooling is applied for the features before they are passed to FC layers, following the
+                        well-established <a href="https://github.com/pytorch/vision">torchvision</a> package.
+                        One problem here is which feature map should be used in Class Head,
+                        given ResNeXt-FPN outputs four \(256d\) feature maps.
+                        Considering that the task is to classify the entire image,
+                        we choose the last feature map that contains the strongest semantics and the largest scale.
+                        Another alternative is to use the feature map from ResNeXt (<em>i.e.</em>, the \(2048d\) one).
+                        We used this feature map in our initial architecture to parse the global information.
+                        However, after extending our architecture to parse the local extra,
+                        we found out that using the \(256d\) features from FPN
+                        can stabilize the training and improve the performance.
+                        We regard this as an advantage of consistent gradients from the local and global information for the
+                        back propagation.
+                    </p>
+        
+                    <h4 id="archit_rpn">3. RPN</h4>
+                    <a data-fancybox="gallery" href="figs/archit/rpn.jpg">
+                        <img style="width: 70%; margin-left: 14%;" src="figs/archit/rpn.jpg" alt='missing' />
+                    </a>
+                    <p>
+                        To parse the local information,
+                        we first feed the feature maps from the ResNeXt-FPN into a Region Proposal Network <cite>ref_fpn</cite>
+                        (RPN)
+                        to propose regions that may contain elements in a timeline image.
+                        RPN is a fully convolutional network (FCN) that simultaneously predicts element locations (by bbox)
+                        and objectness probability (<em>i.e.</em>, whether there is an object within the bbox) in an image.
+                        It takes the four feature maps from ResNeXt-FPN as inputs
+                        and generates anchors (a set of reference bboxes) of various sizes
+                        for each feature map (<em>e.g.</em>, \(32^2, 64^2, 128^2, 256^2\)
+                        <!-- for the \(1\text{st}, 2\text{ed}, 3\text{rd}\), and \(4\text{th}\)  -->
+                        for the \(1\)st, \(2\)ed, \(3\)rd, and \(4\)th
+                        feature map, respectively).
+                        For each grid in each feature map, RPN uses an anchor generator to generate three anchors of three
+                        aspect ratios (<em>i.e.</em>, \(1:2, 1:1, 2:1\)).
+                        For each three anchors center at the same grid,
+                        RPN outputs a \(3d\) vector to predict their objectness probability
+                        and a \(3 \times 4d\) vector to predict their regression offsets.
+                        A region proposal creator will then process these outputs together with anchors
+                        to remove bboxes without elements and crop bboxes exceeding the boundary of the image.
+                        The remaining bboxes are then be used to extract regions of interest (RoIs) from the feature maps using
+                        a RoIAlign layer.
+                        Besides, the RoIAlign layer normalize each RoI to fixed sizes
+                        for passing it to two heads (\(7 \times 7\) for Box Head and \(14 \times 14\) for Mask Head).
+                    </p>
+        
+                    <h4 id="archit_box">4. Box Head</h4>
+                    <a data-fancybox="gallery" href="figs/archit/box_head.jpg">
+                        <img style="width: 45%; margin-left: 13.5%;" src="figs/archit/box_head.jpg" alt='missing' />
+                    </a>
+                    <p>
+                        The Box Head follows the design in <cite>ref_fast_rcnn</cite>
+                        to use two sibling FC layers to classify the category
+                        and regress the bbox of the element within a RoI.
+                        It takes a \(256d\) feature of resolution \(7 \times 7 \) from RPN as the input
+                        and two FC layers to reduce the feature to \(1024d\).
+                        It then uses two sibling FC layers to output: 1) a \(7d\) vector that can be used to compute the
+                        category over 6 element categories and 1 "catch all" background,
+                        and 2) a \(6 \times 4d\) vector that represents 6 bbox regressions,
+                        each of which is a four-value tuple \(t = (t_x, t_y, t_w, t_h)\) for a category.
+                        We use the parameterization for \(t\) given in <cite>ref_fast_rcnn</cite>,
+                        in which \(t\)
+                        specifies a
+                        scale-invariant translation and log-space height/width shift
+                        relative to an RoI.
+                    </p>
+        
+                    <h4 id="archit_mask">5. Mask Head</h4>
+                    <a data-fancybox="gallery" href="figs/archit/mask_head.jpg">
+                        <img style="width: 40%; margin-left: 16%;" src="figs/archit/mask_head.jpg" alt='missing' />
+                    </a>
+                    <p>
+                        The Mask Head follows the design in <cite>ref_mask_rcnn</cite>
+                        to use an FCN for predicting the pixels of the element within a RoI.
+                        Specifically,
+                        it takes a \(256d\) feature of resolution \(14 \times 14 \) from RPN as the input
+                        and uses 4 Conv2D layers of \(3 \times 3\) kernels, 1 transposed Conv2D layer,
+                        and 1 Conv2D of \(1 \times 1\) kernel to output 6 binary masks of resolution \(28 \times 28\), one for
+                        each of the 6 categories.
+                        The binary masks indicate whether a pixel inside the RoI belongs to the element or not.
+                    </p>
             </div>
         </section>
-
-        <!-- <hr />
-        <section id="paper" class="paper">
-            <h2>Paper</h2>
-            <div class="gallary"></div>
-        </section> -->
-
-        <!-- <hr />
-        <section id="materials" class="materials">
-                <h2>Materials</h2>
-                
-            <h4>1. Code</h4>
-            To be added soon.
-
-            <h4>2. Datasets</h4>
-            To be added soon.            
-        </section> -->
-
         <hr />
+
+        <section id="training" class="training">
+            <h2 class="collapsible">Training</h2>
+            <div class="section-content">
+                    <h4 id="train_loss">1. Loss Functions</h4>
+                    <p>
+                        Our model is optimized for a multi-task loss function that consists of seven losses:
+                        \begin{equation}
+                        \begin{split}
+                        \mathcal{L} &= \lambda_1 \mathcal{L}_{{Image}_{type}} + \lambda_2 \mathcal{L}_{{Image}_{orientation}} \\
+                        & + \lambda_3 \mathcal{L}_{{RoI}_{objectness}} + \lambda_4 \mathcal{L}_{{RoI}_{bbox}} \\
+                        & + \lambda_5 \mathcal{L}_{{DT}_{type}} + \lambda_6 \mathcal{L}_{{DT}_{bbox}} + \lambda_7
+                        \mathcal{L}_{{DT}_{mask}}
+                        \end{split}
+                        \end{equation}
+                    </p>
+        
+                    <table id="tb_losses" style="width:50%;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Target</th>
+                                <th>Type</th>
+                                <th>Loss</th>
+                                <th>Weight</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+        
+                    <p>The summary of these losses is presented in the above table.
+                        The hyper-parameters \(\lambda\) control the balance between these seven task losses.
+                        We note that the losses defined on the entire image (<em>i.e.</em>, \(\mathcal{L}_{{Image}_{type}}\) and
+                        \(\mathcal{L}_{{Image}_{orientation}}\))
+                        are not on the same scale with other losses (which are defined on the local regions of the image).
+                        Therefore, we empirically set a smaller \(\lambda\) to them (<em>i.e.</em>, 0.15)
+                        and follow previous works <cite>ref_fast_rcnn</cite><cite>ref_rpn</cite><cite>ref_mask_rcnn</cite> to
+                        keep other losses as 1.
+                        The detail computation of each loss is described as follows:
+                    </p>
+        
+                    <div class="list_losses">
+                        <span>\(\mathcal{L}_{{Image}_{type}}\)</span>
+                        <p>
+                            The \(\mathcal{L}_{{Image}_{type}}\), defined on the entire image,
+                            is computed using the output on the timeline type from <a href="#archit_class"
+                                style="color:#5B9BD5;"><strong>Class Head</strong></a>.
+                            The output is a discrete probability distribution \(p = (p_1, ..., p_{10})\) over 10 timeline types
+                            computed by a softmax function.
+                            The timeline type classification loss is a log loss for the true type \(u:
+                            \mathcal{L}_{{Image}_{type}}(p, u) = -\log{p}_{u}\).
+                        </p>
+        
+                        <span>\(\mathcal{L}_{{Image}_{orientation}}\)</span>
+                        <p>
+                            The \(\mathcal{L}_{{Image}_{orientation}}\), defined on the entire image,
+                            is computed using the output on the timeline orientation from <a href="#archit_class"
+                                style="color:#5B9BD5;"><strong>Class Head</strong></a>.
+                            The output is a discrete probability distribution \(p = (p_1, p_2, p_3)\) over 3 timeline
+                            orientations computed by a softmax function.
+                            The timeline orientation classification loss is a log loss for the true orientation \(u:
+                            \mathcal{L}_{{Image}_{orientation}}(p, u) = -\log{p}_{u}\).
+                        </p>
+        
+                        <span>\(\mathcal{L}_{{RoI}_{objectness}}\)</span>
+                        <p>
+                            The \(\mathcal{L}_{{RoI}_{objectness}}\), defined on each RoI,
+                            is computed using the output on the objectness from <a href="#archit_rpn"
+                                style="color:#70AD47;"><strong>RPN</strong></a>.
+                            For each RoI, <a href="#archit_rpn" style="color:#70AD47;"><strong>RPN</strong></a> uses a softmax
+                            function to compute a
+                            probability \(p\) to predict whether the RoI contains objects or not (<em>i.e.</em>, foreground
+                            <em>vs.</em> background).
+                            The ground truth \(p^*\) is 1 if a RoI is foreground, and is 0 if it is background.
+                            The objectness classification loss is a log loss over two classes:
+                            \(\mathcal{L}_{{RoI}_{objectness}}(p, p^*) = - p^* \log p - (1 - p^*) \log (1 - p)\).
+                            We refer the reader to <cite>ref_rpn</cite> for more details.
+                        </p>
+        
+                        <span>\(\mathcal{L}_{{RoI}_{bbox}}\)</span>
+                        <p>
+                            The \(\mathcal{L}_{{RoI}_{bbox}}\), defined on each RoI,
+                            is computed using the output on the bbox from <a href="#archit_rpn"
+                                style="color:#70AD47;"><strong>RPN</strong></a>.
+                            For each RoI, <a href="#archit_rpn" style="color:#70AD47;"><strong>RPN</strong></a> outputs bbox
+                            correction \(t = (t_x, t_y, t_w, t_h)\)
+                            of the anchor associated with the RoI. The regression loss is computed using Smooth \(L_1\) on the
+                            prediction \(t\) and ground truth \(t^* \):
+                            \begin{equation}
+                            \mathcal{L}_{{RoI}_{bbox}}(t, t^*) = p^* L_1^\text{smooth}(t - t^*),
+                            \end{equation}
+                            where \( L_1^\text{smooth}(x) = \begin{cases}0.5 x^2 & \text{if} \vert x \vert < 1 \\ \vert x \vert
+                                - 0.5 & \text{otherwise} \end{cases}\), and the term \(p^*\) indicates that the loss is
+                                activated only for foreground RoI (\(p^*=1\)) and is disabled otherwise (\(p^*=0\)). We refer
+                                the reader to <cite>ref_rpn</cite> for more details.
+                        </p>
+                        </li>
+        
+                        <span>\(\mathcal{L}_{{DT}_{type}}\)</span>
+                        <p>
+                            The \(\mathcal{L}_{{DT}_{type}}\), defined on each detection (<em>i.e.</em>, DT),
+                            is computed using the output on the element category from <a href="#archit_box"
+                                style="color:#70AD47;"><strong>Box Head</strong></a>.
+                            For each DT, <a href="#archit_box" style="color:#70AD47;"><strong>Box Head</strong></a> uses a
+                            softmax function to compute a
+                            discrete probability distribution \(p = (p_0, p_1, ..., p_6)\) over six pre-defined element
+                            categories and a "catch all" background.
+                            The element category classification loss is a log loss for the true category \(u:
+                            \mathcal{L}_{{DT}_{type}}(p, u) = -\log{p}_{u}\).
+                        </p>
+        
+                        <span>\(\mathcal{L}_{{DT}_{bbox}}\)</span>
+                        <p>
+                            The \(\mathcal{L}_{{DT}_{bbox}}\), defined on each DT,
+                            is computed using the output on the element bbox from <a href="#archit_box"
+                                style="color:#70AD47;"><strong>Box Head</strong></a>.
+                            For each DT,
+                            <a href="#archit_box" style="color:#70AD47;"><strong>Box Head</strong></a> outputs 6 bbox regression
+                            corrections, \(t^k = (t^k_x, t^k_y, t^k_w, t^k_h)\) indexed by \(k\),
+                            one for each of the 6 categories.
+                            We use the parameterization for \(t^k\) given in <cite>ref_fast_rcnn</cite>,
+                            in which \(t^k\) specifies a
+                            scale-invariant translation and log-space height/width shift relative to a region proposal (RoI).
+                            Similar to \(\mathcal{L}_{{RoI}_{bbox}}\), the regression loss \(\mathcal{L}_{{DT}_{bbox}}\)
+                            is also computed using Smooth \(L_1\): \(\mathcal{L}_{{RoI}_{bbox}}(t^u, t^*) = [u > 0]
+                            L_1^\text{smooth}(t^u - t^*) \),
+                            where \(t^u\) is the predicted bbox correction of the true category \(u\) and \(t^*\) is the ground
+                            truth.
+                            The Iverson bracket indicator function
+                            \([u > 0]\) evaluates to 1 when \(u > 0\) and 0 otherwise,
+                            which means the loss is only activated on the foreground predictions (\(p_1\) to \(p_6\)), since the
+                            "catch all" background class is labeled \(u = 0\) by convention.
+                            We refer the reader to <cite>ref_fast_rcnn</cite> for more details.
+                        </p>
+        
+                        <span>\(\mathcal{L}_{{DT}_{mask}}\)</span>
+                        <p>
+                            The \(\mathcal{L}_{{DT}_{mask}}\), defined on each DT,
+                            is computed using the output of <a href="#archit_mask" style="color:#70AD47;"><strong>Mask
+                                    Head</strong></a>.
+                            For each DT, <a href="#archit_mask" style="color:#70AD47;"><strong>Mask Head</strong></a> outputs 6
+                            binary masks of resolution \(m \times m \) (defined as a hyper parameter),
+                            one for each of the 6 categories. \(\mathcal{L}_{{DT}_{mask}}\) is defined as the average binary
+                            cross-entropy loss over all pixels of a mask.
+                            Besides, for an DT associated with its ground true category \(u\), the loss is only defined in the
+                            \(u\)-th mask (other mask outputs do not contribute to the loss):
+                            \( \mathcal{L}_{{DT}_{mask}} = - [u > 0] \frac{1}{m^2} \sum_{1 \leq i, j \leq m} \big[ p^*_{ij} \log
+                            p^u_{ij} + (1-p^*_{ij}) \log (1- p^u_{ij}) \big] \),
+                            where \(p^*_{ij}\) is the label of a pixel \((i, j)\) in the true mask
+                            and \(p^u_{ij}\) is the predicted label of the same pixel for the true category \(u\); the term \([u
+                            > 0]\) works in the same manner as in \(\mathcal{L}_{{DT}_{bbox}}\).
+                            We refer the reader to <cite>ref_mask_rcnn</cite> for more details.
+                        </p>
+                    </div>
+        
+                    <h4 id="train_hyper">2. Hyper parameters</h4>
+                    We implemented two types of CNN backbone for our model, namely, ResNeXt-101 and ResNeXt-50.
+                    Below are the hyper parameters we used to train our models with ResNeXt-101 and ResNeXt-50, respectively.
+                    <pre>
+        <code class="yaml">MODEL:
+            META_ARCHITECTURE: "GeneralizedRCNN"
+            WEIGHT: "catalog://ImageNetPretrained/FAIR/20171220/X-101-32x8d"
+            BACKBONE:
+                CONV_BODY: "R-101-FPN"
+                OUT_CHANNELS: 256
+            CLASSIFIER:
+                NUM_CLASSES: 10 
+            CLASSIFIER2:
+                NUM_CLASSES: 3
+            RPN:
+                USE_FPN: True
+                ANCHOR_STRIDE: (4, 8, 16, 32, 64)
+                PRE_NMS_TOP_N_TRAIN: 2000
+                PRE_NMS_TOP_N_TEST: 1000
+                POST_NMS_TOP_N_TEST: 1000
+                FPN_POST_NMS_TOP_N_TEST: 1000
+            ROI_HEADS:
+                USE_FPN: True
+                BATCH_SIZE_PER_IMAGE: 256
+            ROI_BOX_HEAD:
+                POOLER_RESOLUTION: 7
+                POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
+                POOLER_SAMPLING_RATIO: 2
+                FEATURE_EXTRACTOR: "FPN2MLPFeatureExtractor"
+                PREDICTOR: "FPNPredictor"
+                NUM_CLASSES: 7
+            ROI_MASK_HEAD:
+                POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
+                FEATURE_EXTRACTOR: "MaskRCNNFPNFeatureExtractor"
+                PREDICTOR: "MaskRCNNC4Predictor"
+                POOLER_RESOLUTION: 14
+                POOLER_SAMPLING_RATIO: 2
+                EXCLUDE_LABELS: (0, 3)
+                RESOLUTION: 28
+                SHARE_BOX_FEATURE_EXTRACTOR: False
+            RESNETS:
+                STRIDE_IN_1X1: False
+                NUM_GROUPS: 32
+                WIDTH_PER_GROUP: 8
+            MASK_ON: True
+            CLASSIFIER_ON: True 
+            CLASSIFIER2_ON: True
+        INPUT:
+            MIN_SIZE_TRAIN: 833
+            MAX_SIZE_TRAIN: 1024
+            MIN_SIZE_TEST: 833 
+            MAX_SIZE_TEST: 1024
+        DATALOADER:
+            SIZE_DIVISIBILITY: 32
+            ASPECT_RATIO_GROUPING: False
+        SOLVER:
+            BASE_LR: 0.005
+            WEIGHT_DECAY: 0.0001
+            STEPS: (56000, 76000)
+            # Epoch = (MAX_ITER * IMS_PER_BATCH) / #dataset
+            MAX_ITER: 84000
+            IMS_PER_BATCH: 4
+            CHECKPOINT_PERIOD: 10000</code>
+        <code class="yaml">MODEL:
+            META_ARCHITECTURE: "GeneralizedRCNN"
+            WEIGHT: "catalog://ImageNetPretrained/MSRA/R-50"
+            BACKBONE:
+                CONV_BODY: "R-50-FPN"
+                OUT_CHANNELS: 256
+            CLASSIFIER:
+                NUM_CLASSES: 10 
+            CLASSIFIER2:
+                NUM_CLASSES: 3
+            RPN:
+                USE_FPN: True
+                ANCHOR_STRIDE: (4, 8, 16, 32, 64)
+                PRE_NMS_TOP_N_TRAIN: 2000
+                PRE_NMS_TOP_N_TEST: 1000
+                POST_NMS_TOP_N_TEST: 1000
+                FPN_POST_NMS_TOP_N_TEST: 1000
+            ROI_HEADS:
+                USE_FPN: True
+                BATCH_SIZE_PER_IMAGE: 256
+            ROI_BOX_HEAD:
+                POOLER_RESOLUTION: 7
+                POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
+                POOLER_SAMPLING_RATIO: 2
+                FEATURE_EXTRACTOR: "FPN2MLPFeatureExtractor"
+                PREDICTOR: "FPNPredictor"
+                NUM_CLASSES: 7
+            ROI_MASK_HEAD:
+                POOLER_SCALES: (0.25, 0.125, 0.0625, 0.03125)
+                FEATURE_EXTRACTOR: "MaskRCNNFPNFeatureExtractor"
+                PREDICTOR: "MaskRCNNC4Predictor"
+                POOLER_RESOLUTION: 14
+                POOLER_SAMPLING_RATIO: 2
+                RESOLUTION: 28
+                SHARE_BOX_FEATURE_EXTRACTOR: False
+            MASK_ON: True
+            CLASSIFIER_ON: True 
+            CLASSIFIER2_ON: True 
+        INPUT:
+            MIN_SIZE_TRAIN: 833
+            MAX_SIZE_TRAIN: 1024
+            MIN_SIZE_TEST: 833
+            MAX_SIZE_TEST: 1024
+        DATALOADER:
+            SIZE_DIVISIBILITY: 32
+            ASPECT_RATIO_GROUPING: False
+        SOLVER:
+            BASE_LR: 0.005
+            WEIGHT_DECAY: 0.0001
+            STEPS: (56000, 76000)
+            # Epoch = (MAX_ITER * IMS_PER_BATCH) / #dataset
+            MAX_ITER: 84000
+            IMS_PER_BATCH: 4 
+            CHECKPOINT_PERIOD: 10000</code>
+        </pre>
+            </div>
+        </section>
+        <hr />
+
+        <section id="examples" class="examples">
+            <h2 class="collapsible">Examples</h2>
+            <div class="section-content">
+                    <h4>1. Examples outputted from the model and refined by <em>DL GrabCut</em>.</h4>
+                    <p>
+                        After applying <em>Non-Maximum Merging</em> and <em>Redundancy Recover</em>,
+                        we visualize the final predicted category, bbox, and mask of each element on timelines.
+                        We then apply <em>DL GrabCut</em> and convert the timeline infographics to greyscale images for a clear
+                        demonstration.
+                        Please note that the aliasing of some borders of masks is caused by the rendering method we used
+                        (<em>i.e.</em>, the <em><a
+                                href="//docs.opencv.org/2.4/modules/imgproc/doc/structural_analysis_and_shape_descriptors.html">findCountor</a></em>
+                        in openCV.)
+                    </p>
+                    <div id="examples_good" class="gallary"></div>
+        
+                    <h4>2. Supplemental examples</h4>
+                    <p>
+                        In this section, we provide additional examples from ablation studies
+                        to indicate some properties of the model.
+                    </p>
+        
+                    <span class="card-title">Examples of parsing infographics with natural and graphical elements</span>
+                    <div class="card-content">
+                        <p>
+                            In an infographic, a common practice is to show objects with photos and annotate them with graphical
+                            shapes.
+                            Such kind of hybrid components requires a model that considers the characteristics of natural and
+                            graphical elements.
+                            Although our datasets do not include natural elements,
+                            we are interested in the performance of our model on timelines contain graphical and natural
+                            elements.
+                            Thus, we randomly substitute some graphical marks with photos of animals and then feed them to our
+                            model.
+                        </p>
+                        <div id="examples_hybrid" class="gallary">
+                            <div class="item item-2">
+                                <div class="item-content">
+                                    <a data-fancybox="gallery" href="figs/examples/cat_1.jpg">
+                                        <img src="figs/examples/cat_1_tn.jpg" alt='missing' /> </a>
+                                    <span class="legend">a</span></div>
+                            </div>
+                            <div class="item item-2">
+                                <div class="item-content">
+                                    <a data-fancybox="gallery" href="figs/examples/cat_2.jpg">
+                                        <img src="figs/examples/cat_2_tn.jpg" alt='missing' /> </a>
+                                    <span class="legend">b</span></div>
+                            </div>
+                            <p>
+                                In the <strong>Fig.a</strong> above, we substitute all annotation icons with animal photos
+                                and randomly add additional animal photos for disruption.
+                                The results show that our model can still correctly classify these animals as annotation icons.
+                                We regard this performance as a benefit of the ImageNet pre-trained network.
+                            </p>
+        
+                            <p style="margin-top:0;">
+                                In the <strong>Fig.b</strong>, we further substitute all event marks with animal photos
+                                to see whether the model can classify them as event marks.
+                                Interestingly, our model can finish the task perfectly:
+                                although the cats look identical,
+                                our model classifies the cats that randomly distributed in the image as annotation marks,
+                                while the cats on the main body as event marks.
+                            </p>
+        
+                            <div class="item item-1">
+                                <div class="item-content">
+                                    <a data-fancybox="gallery" href="figs/examples/cat_3.jpg">
+                                        <img src="figs/examples/cat_3_tn.jpg" alt='missing' /> </a>
+                                    <span class="legend">c</span></div>
+                            </div>
+                        </div>
+        
+                        <p>
+                            However, this result does not mean that the model can recognize elements based on their locations
+                            and relationships with other elements.
+                            <strong>Figure.c</strong> presents a more general case.
+                            For this infographic, which has a similar representation with a linear timeline,
+                            our model can correctly identify the annotation marks, annotation text, and annotation icons,
+                            but classifies all corncobs in the middle as annotation icons instead of event marks or main body.
+                            This example demonstrates that the DL model
+                            mainly recognizes elements based on their visual appearance,
+                            rather than their locations and relationships to other elements.
+                            Thus, for the cats on the main body in <strong>Fig.b</strong>,
+                            we conjecture that is the appearances of them together with other elements (<em>e.g.</em>, the main
+                            body and annotation marks) around
+                            that help our model to achieve correct classifications.
+                        </p>
+        
+                        <p>
+                            These examples relate to issues about <strong>networks on images with natural and graphical
+                                elements.</strong>
+                            Besides, these examples also involve <strong>translation invariance</strong> <em>vs.</em>
+                            <strong>translation variance</strong>
+                            in networks.
+                            Future research is needed to understand these cases further.
+                            We discuss these issues and potential solutions in <strong>Section 7.1</strong> in our paper.
+                        </p>
+                    </div>
+        
+                    <span class="card-title">Examples of using tricks to improve the detection results</span>
+                    <div class="card-content">
+                        <p>
+                            Given our work is not aimed at high metric values,
+                            we did not optimize our model with bells and whistles,
+                            such as comprehensive data augmentation, multi-scale train/test, more advanced loss functions, and
+                            other techniques.
+                            Outside the scope of this work, we expect that such improvement skills are applicable to our model.
+                            Here we present examples to
+                            demonstrate how our model can be improved with such kind of techniques.
+                        </p>
+        
+                        <div id="examples_scale" class="gallary">
+                            <div class="item item-2">
+                                <div class="item-content">
+                                    <a data-fancybox="gallery" href="figs/examples/scale_o.jpg">
+                                        <img src="figs/examples/scale_o_tn.jpg" alt='missing' /> </a>
+                                    <span class="legend">d</span></div>
+                            </div>
+                            <div class="item item-2">
+                                <div class="item-content">
+                                    <a data-fancybox="gallery" href="figs/examples/scale_u.jpg">
+                                        <img src="figs/examples/scale_u_tn.jpg" alt='missing' /> </a>
+                                    <span class="legend">e</span></div>
+        
+                            </div>
+                            <div class="item item-1">
+                                <div class="item-content">
+                                    <a data-fancybox="gallery" href="figs/examples/scale_d.jpg">
+                                        <img src="figs/examples/scale_d_tn.jpg" alt='missing' /> </a>
+                                    <span class="legend">f</span></div>
+                            </div>
+                        </div>
+        
+                        <p>
+                            The <strong>Fig.d</strong> shows a timeline infographic
+                            and <strong>Fig.e</strong> presents the detection results of our model.
+                            As shown in <strong>Fig.e</strong>,
+                            the annotation marks are not covered by the bboxes.
+                            Our investigation reveals that this is because the sizes of the annotation marks are too large with
+                            respect to the image size.
+                            There is no such kind of unusual large annotation marks in the training set.
+                            Thus, the model tends to use a relatively small bbox to cover the annotation marks.
+                            In <strong>Fig.f</strong>, we apply a multi-scale testing technique
+                            by extending the image (resizing also works) to reduce the relative size of the annotation marks.
+                            The model then can detect the marks correctly.
+                            Multi-scale training, which is a data augmentation strategy.
+                            is another method to tackle this kind of cases.
+                            Simply put, we can resize the training images
+                            to cover diverse sizes of annotation marks.
+                        </p>
+        
+                        <div id="examples_bw" class="gallary" style="justify-content: space-around;">
+                            <div class="item item-2">
+                                <div class="item-content">
+                                    <a data-fancybox="gallery" href="figs/examples/bw_u_o.jpg">
+                                        <img src="figs/examples/bw_u_o_tn.jpg" alt='missing' /> </a>
+                                    <span class="legend">h</span></div>
+                            </div>
+                            <div class="item item-2">
+                                <div class="item-content">
+                                    <a data-fancybox="gallery" href="figs/examples/bw_u.jpg">
+                                        <img src="figs/examples/bw_u_tn.jpg" alt='missing' /> </a>
+                                    <span class="legend">i</span></div>
+                            </div>
+        
+                            <div class="item item-2">
+                                <div class="item-content">
+                                    <a data-fancybox="gallery" href="figs/examples/bw_d_o.jpg">
+                                        <img src="figs/examples/bw_d_o_tn.jpg" alt='missing' /> </a>
+                                    <span class="legend">j</span></div>
+                            </div>
+                            <div class="item item-2">
+                                <div class="item-content">
+                                    <a data-fancybox="gallery" href="figs/examples/bw_d.jpg">
+                                        <img src="figs/examples/bw_d_tn.jpg" alt='missing' /> </a>
+                                    <span class="legend">k</span></div>
+                            </div>
+                        </div>
+                        <p>
+                            <strong>Figure.h</strong> is a greyscale timeline and <strong>Fig.i</strong> shows the detection
+                            results.
+                            As shown in the enlarging views in the top of <strong>Fig.i</strong>,
+                            some event marks, whose colors are similar to the background color,
+                            are undetected or incorrectly detected as a part of the annotation text.
+                            We discover that the lacking of greyscale training data is the major reason,
+                            because in timelines with RGB channels it is unusual to have event marks with colors similar to the
+                            background color.
+                            Thus, we randomly add some colors to the undetected event marks (<strong>Fig.j</strong>).
+                            The model successfully detects these marks as our expected (<strong>Fig.k</strong>).
+                            To handle this kind of cases,
+                            a data augmentation strategy that converts RGB images to greyscale images
+                            can be applied in training samples.
+                        </p>
+        
+                        <p>Both these two representative cases (<em>i.e.</em>, the large size and greyscale examples)
+                            can be addressed by data augmentation techniques.
+                            Besides the data aspect,
+                            there are other enhancement techniques for networks,
+                            such as OHEM<cite>ref_OHEM</cite>, focal loss<cite>ref_focal_loss</cite>,
+                            soft-NMS<cite>ref_soft_nms</cite>, <em>etc.</em>
+                            We leave this improvement techniques for future work.
+                        </p>
+                    </div>
+            </div>
+        </section>
+        <hr />
+
         <section id="references" class="references">
             <h2 style="text-align:left;">Reference</h2>
             <p id="ref_resnext">Saining Xie, Ross Girshick, Piotr Dollár, Zhuowen Tu, Kaiming He. <a
@@ -765,13 +790,16 @@ SOLVER:
                     Region Proposal Networks.”</a> In Proc. NIPS. 2015.</p>
             <p id="ref_mask_rcnn">Kaiming He, Georgia Gkioxari, Piotr Dollár, and Ross Girshick. <a
                     href="https://arxiv.org/abs/1703.06870">"Mask R-CNN."</a> In Proc. IEEE ICCV. 2017.</p>
-            <p id="ref_OHEM">Abhinav Shrivastava, Abhinav Gupta, Ross Girshick. <a href="https://arxiv.org/abs/1604.03540">
-                "Training Region-based Object Detectors with Online Hard Example Mining."
-            </a> In Proc. IEEE CVPR. 2016.</p>
-            <p id="ref_focal_loss">Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, Piotr Dollár. <a href="https://arxiv.org/abs/1708.02002">
-            "Focal Loss for Dense Object Detection."</a> In Proc. IEEE ICCV. 2017.</p>
+            <p id="ref_OHEM">Abhinav Shrivastava, Abhinav Gupta, Ross Girshick. <a
+                    href="https://arxiv.org/abs/1604.03540">
+                    "Training Region-based Object Detectors with Online Hard Example Mining."
+                </a> In Proc. IEEE CVPR. 2016.</p>
+            <p id="ref_focal_loss">Tsung-Yi Lin, Priya Goyal, Ross Girshick, Kaiming He, Piotr Dollár. <a
+                    href="https://arxiv.org/abs/1708.02002">
+                    "Focal Loss for Dense Object Detection."</a> In Proc. IEEE ICCV. 2017.</p>
             <p id="ref_soft_nms">Navaneeth Bodla, Bharat Singh, Rama Chellappa, Larry S. Davis.
-                <a href="https://arxiv.org/abs/1704.04503">"Soft-NMS -- Improving Object Detection With One Line of Code."</a>
+                <a href="https://arxiv.org/abs/1704.04503">"Soft-NMS -- Improving Object Detection With One Line of
+                    Code."</a>
                 In Proc. IEEE ICCV. 2017.
             </p>
         </section>
@@ -779,7 +807,7 @@ SOLVER:
 
     <script>
         function insertExampleImage() {
-            const section = document.querySelector('#examples > #examples_good')
+            const section = document.querySelector('#examples #examples_good')
             for (let i = 1; i < 13; ++i) {
                 section.insertAdjacentHTML('beforeend', `
                 <div class="item">
@@ -867,6 +895,23 @@ SOLVER:
                 .forEach(p => parent.appendChild(p))
         }
 
+        function parseCollapsible() {
+            const coll = document.getElementsByClassName("collapsible");
+
+            for (let i = 0; i < coll.length; i++) {
+
+                coll[i].addEventListener("click", function () {
+                    this.classList.toggle("active");
+                    const content = this.nextElementSibling;
+                    if (content.style.maxHeight){
+                        content.style.maxHeight = null;
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    }
+                });
+            }
+        }
+
         // insert categorytable
         insertCategoryTable()
 
@@ -884,6 +929,9 @@ SOLVER:
 
         // reference
         convertReference()
+
+        // collapsible
+        parseCollapsible()
 
     </script>
 </body>

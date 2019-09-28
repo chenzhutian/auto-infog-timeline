@@ -66,7 +66,7 @@ video {
     letter-spacing: 0.25rem;
     text-align: center;
     width: 80%;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .teaser-content .authors {
@@ -265,3 +265,76 @@ tr:nth-child(even) {
     transform: translateX(-50%);
     font-weight: bold;
 }
+
+.collapsible { 
+    text-align: left;
+}
+
+.active, 
+.collapsible:hover {
+    background-color: #ccc;
+  }
+
+.section-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+
+.active + .section-content {
+    overflow: initial;
+
+}
+
+.collapsible:before {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 13px;
+    color: white;
+    /* float: ; */
+    line-height: 2.2em; /* hardcode*/
+  }
+  
+  .active::before {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+  }
+
+  .dropdown {
+    /* position: relative;
+    display: inline-block; */
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: transparent;
+    border: 0.5px #fff solid;
+
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+    color: #fff;
+    border-top: 0.5px #fff solid;
+    min-width: 6rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding: 12px 16px;
+    letter-spacing: 0.2rem;
+    font-size: 0.8rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
