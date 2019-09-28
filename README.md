@@ -47,3 +47,27 @@ the programm will load the last result in `OUTPUT_DIR` directly run the evaluati
 If you have issues running or compiling this code, we have compiled a list of common issues in
 [TROUBLESHOOTING.md](TROUBLESHOOTING.md). If your issue is not present there, please feel
 free to open a new issue.
+
+## Note
+
+The code in this repo is under active development.
+Datasets and demos of Jupyter Notebooks will be provided soon.
+
+
+## Citing RuleMatrix
+```
+@ARTICLE{chen19, 
+  author    = {Zhutian Chen and
+               Yun Wang and
+               Qianwen Wang and
+               Yong Wang and
+               Huamin Qu},
+  title     = {Towards Automated Infographic Design: Deep Learning-based Auto-Extraction
+               of Extensible Timeline},
+  journal={IEEE Transactions on Visualization and Computer Graphics}, 
+  year={2018}, 
+  volume={}, 
+  number={}, 
+  pages={1-1}
+}
+```
