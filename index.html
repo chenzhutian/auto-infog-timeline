@@ -35,11 +35,11 @@
                 </span>
             </div>
             <div class="jump-btn-group">
+                <a href="//chenzhutian.org/projects/2019_autotimeline/paper.pdf" class="jump-btn"
+                    target="_blank">Paper</a>
                 <a href="#pipeline" class="jump-btn">Pipeline</a>
                 <a href="#dataset" class="jump-btn">Dataset</a>
                 <a href="#Code" class="jump-btn">Code</a>
-                <a href="//chenzhutian.org/projects/2019_autotimeline/paper.pdf" class="jump-btn"
-                    target="_blank">Paper</a>
                 <div class="dropdown">
                     <a class="dropbtn jump-btn">suppl. materials</a>
                     <div class="dropdown-content">
@@ -81,6 +81,51 @@
             on
             these templates to qualitatively demonstrate the performance. The results confirm that our approach can
             effectively extract extensible templates from real-world timeline infographics.
+        </section>
+        <hr />
+
+        <section id="pipeline" class="pipeline">
+            <h2>Pipeline</h2>
+            <figure style="text-align: center;
+            width: 100%;
+            margin: 0 auto 20px auto;">
+                <img src="figs/pipeline.jpg" alt='missing' />
+                <figcaption> Figure 1. <strong>An automated approach to extract an extensible timeline template from a bitmap image.</strong> a) Original bitmap image; b) Content
+                    understanding including global and local information of the timeline; c) Extensible template contains editable elements and their
+                    semantic roles; d) New timeline (with mock-up colors) automatically generated with updated data.</figcaption>
+            </figure>
+
+            <br />
+            <h4>Step b. Understand the content of an infographic by using a <em>deep learning model</em>.</h4>
+            <figure style="text-align: center;
+            width: 60%;
+            margin: 0 auto 20px auto;">
+                <img src="figs/41_architecture.png" alt='missing' />
+                <figcaption>Figure 6. <strong>The complete architecture</strong> to parse both global and local information
+                    simultaneously. For model detail please refer to <a href="#architecture">Architecture</a>.</figcaption>
+            </figure>
+
+            <br />
+            <h4>Step c. Extract the extensible template based on the content understanding by using a <em>post-processing pipeline</em>.</h4>
+            <figure style="text-align: center;
+            width: 90%;
+            margin: 0 auto 20px auto;">
+                <img src="figs/50_pipeline2.png" alt='missing' />
+                <figcaption>Figure 8. <strong>The reconstruction pipeline</strong>: a) uses NMM and RR to eliminate
+                    repeated and fix failed detections, respectively; b) uses DL GrabCut
+                    and text recognition to collect the elements to be reused and updated,
+                    respectively; c) the final outputs can be depicted by a specification.</figcaption>
+            </figure>
+
+            <br />
+            <h4>Step d. The final output can be used to generate new timeline by binding with new data.</h4>
+            <figure style="text-align: center;
+            width: 80%;
+            margin: 0 auto 20px auto;">
+                <img src="figs/50_final_template.png" alt='missing' />
+                <figcaption>Figure 11. <strong>The extensible template can be organized in a reusable document.</strong> The <strong>bbox</strong> is a tuple of <em>(top,left,width,height)</em>. The <strong>mask</strong> is a byte array with shape <em>width×height</em>.</figcaption>
+            </figure>
+
         </section>
         <hr />
 

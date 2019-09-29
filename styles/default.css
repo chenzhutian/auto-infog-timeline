@@ -338,3 +338,7 @@ tr:nth-child(even) {
   .dropdown:hover .dropdown-content {
     display: block;
   }
+
+  figcaption {
+      text-align: justify;
+  }
