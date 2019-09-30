@@ -42,8 +42,8 @@ MODEL:
   CLASSIFIER_CLS_ON: True 
   CLASSIFIER_ORIENT_ON: True 
 DATASETS:
-  TRAIN: ("coco_50_train",)
-  TEST: ("coco_50_val",)
+  TRAIN: ("coco_timeline_train",)
+  TEST: ("coco_timeline_val",)
 INPUT:
   MIN_SIZE_TRAIN: 512
   MAX_SIZE_TRAIN: 1024

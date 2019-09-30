@@ -7,134 +7,13 @@ import os
 class DatasetCatalog(object):
     DATA_DIR = "datasets"
     DATASETS = {
-        "coco_50_train": {
-            "img_dir":"coco/50/train",
-            "ann_file":"coco/50/train/coco_format.json",
+        "coco_timeline_train": {
+            "img_dir":"coco/timeline/train",
+            "ann_file":"coco/timeline/train/coco_format.json",
         },
-        "coco_50_val": {
-            "img_dir":"coco/50/val",
-            "ann_file":"coco/50/val/coco_format.json",
-        },
-         "coco_5_fixed_train": {
-            "img_dir":"coco/5_fixed/train",
-            "ann_file":"coco/5_fixed/train/coco_format.json",
-        },
-        "coco_5_fixed_val": {
-            "img_dir":"coco/5_fixed/val",
-            "ann_file":"coco/5_fixed/val/coco_format.json",
-        },
-        "coco_12_fixed_train": {
-            "img_dir":"coco/12_fixed/train",
-            "ann_file":"coco/12_fixed/train/coco_format.json",
-        },
-        "coco_12_fixed_val": {
-            "img_dir":"coco/12_fixed/val",
-            "ann_file":"coco/12_fixed/val/coco_format.json",
-        },
-        "coco_13_fixed_train": {
-            "img_dir":"coco/13_fixed/train",
-            "ann_file":"coco/13_fixed/train/coco_format.json",
-        },
-        "coco_13_fixed_val": {
-            "img_dir":"coco/13_fixed/val",
-            "ann_file":"coco/13_fixed/val/coco_format.json",
-        },
-        "coco_20_train": {
-            "img_dir":"coco/20/train",
-            "ann_file":"coco/20/train/coco_format.json",
-        },
-        "coco_20_val": {
-            "img_dir":"coco/20/val",
-            "ann_file":"coco/20/val/coco_format.json",
-        },
-        "coco_70_train": {
-            "img_dir":"coco/70/train",
-            "ann_file":"coco/70/train/coco_format.json",
-        },
-        "coco_70_val": {
-            "img_dir":"coco/70/val",
-            "ann_file":"coco/70/val/coco_format.json",
-        },
-        "coco_2017_train": {
-            "img_dir": "coco/train2017",
-            "ann_file": "coco/annotations/instances_train2017.json"
-        },
-        "coco_2017_val": {
-            "img_dir": "coco/val2017",
-            "ann_file": "coco/annotations/instances_val2017.json"
-        },
-        "coco_2014_train": {
-            "img_dir": "coco/train2014",
-            "ann_file": "coco/annotations/instances_train2014.json"
-        },
-        "coco_2014_val": {
-            "img_dir": "coco/val2014",
-            "ann_file": "coco/annotations/instances_val2014.json"
-        },
-        "coco_2014_minival": {
-            "img_dir": "coco/val2014",
-            "ann_file": "coco/annotations/instances_minival2014.json"
-        },
-        "coco_2014_valminusminival": {
-            "img_dir": "coco/val2014",
-            "ann_file": "coco/annotations/instances_valminusminival2014.json"
-        },
-        "voc_2007_train": {
-            "data_dir": "voc/VOC2007",
-            "split": "train"
-        },
-        "voc_2007_train_cocostyle": {
-            "img_dir": "voc/VOC2007/JPEGImages",
-            "ann_file": "voc/VOC2007/Annotations/pascal_train2007.json"
-        },
-        "voc_2007_val": {
-            "data_dir": "voc/VOC2007",
-            "split": "val"
-        },
-        "voc_2007_val_cocostyle": {
-            "img_dir": "voc/VOC2007/JPEGImages",
-            "ann_file": "voc/VOC2007/Annotations/pascal_val2007.json"
-        },
-        "voc_2007_test": {
-            "data_dir": "voc/VOC2007",
-            "split": "test"
-        },
-        "voc_2007_test_cocostyle": {
-            "img_dir": "voc/VOC2007/JPEGImages",
-            "ann_file": "voc/VOC2007/Annotations/pascal_test2007.json"
-        },
-        "voc_2012_train": {
-            "data_dir": "voc/VOC2012",
-            "split": "train"
-        },
-        "voc_2012_train_cocostyle": {
-            "img_dir": "voc/VOC2012/JPEGImages",
-            "ann_file": "voc/VOC2012/Annotations/pascal_train2012.json"
-        },
-        "voc_2012_val": {
-            "data_dir": "voc/VOC2012",
-            "split": "val"
-        },
-        "voc_2012_val_cocostyle": {
-            "img_dir": "voc/VOC2012/JPEGImages",
-            "ann_file": "voc/VOC2012/Annotations/pascal_val2012.json"
-        },
-        "voc_2012_test": {
-            "data_dir": "voc/VOC2012",
-            "split": "test"
-            # PASCAL VOC2012 doesn't made the test annotations available, so there's no json annotation
-        },
-        "cityscapes_fine_instanceonly_seg_train_cocostyle": {
-            "img_dir": "cityscapes/images",
-            "ann_file": "cityscapes/annotations/instancesonly_filtered_gtFine_train.json"
-        },
-        "cityscapes_fine_instanceonly_seg_val_cocostyle": {
-            "img_dir": "cityscapes/images",
-            "ann_file": "cityscapes/annotations/instancesonly_filtered_gtFine_val.json"
-        },
-        "cityscapes_fine_instanceonly_seg_test_cocostyle": {
-            "img_dir": "cityscapes/images",
-            "ann_file": "cityscapes/annotations/instancesonly_filtered_gtFine_test.json"
+        "coco_timeline_val": {
+            "img_dir":"coco/timeline/val",
+            "ann_file":"coco/timeline/val/coco_format.json",
         }
     }
 
@@ -149,17 +28,6 @@ class DatasetCatalog(object):
             )
             return dict(
                 factory="COCODataset",
-                args=args,
-            )
-        elif "voc" in name:
-            data_dir = DatasetCatalog.DATA_DIR
-            attrs = DatasetCatalog.DATASETS[name]
-            args = dict(
-                data_dir=os.path.join(data_dir, attrs["data_dir"]),
-                split=attrs["split"],
-            )
-            return dict(
-                factory="PascalVOCDataset",
                 args=args,
             )
         raise RuntimeError("Dataset not available: {}".format(name))

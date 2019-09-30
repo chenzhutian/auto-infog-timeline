@@ -32,7 +32,7 @@ If you find our work useful in your research, please consider citing:
 Check [INSTALL.md](INSTALL.md) for installation instructions.
 
 ## Dataset
-The real world timeline dataset we used can be downlowded [here]().
+The real world timeline dataset we used can be downlowded [here](https://hkustconnect-my.sharepoint.com/:u:/g/personal/zchenbn_connect_ust_hk/ERa04v7ULwlJpvn_0YRRtHsBF7QFBp77t_7caxb8QR2QVg?e=ZKfomX).
 The dataset contains images of timeline infographics with coco format annotations, 
 divided into `train` and `val`:
 ```
@@ -49,8 +49,12 @@ timeline.zip
   |    | - f001.jpg
   |    | ...
 ```
+Create a folder `dataset/coco` in the root of this reprositary and 
+then copy and unzip the dataset under the `dataset/coco` folder.
+The details of path configurations can be found in `maskrcn_benchmark/config/paths_catalog.py`.
+
 We also provide the single annotation for each image for those who want to re-split
-the images into train and test. The annotations can be downloaded [here]().
+the images into train and test. The annotations can be downloaded [here](https://hkustconnect-my.sharepoint.com/:u:/g/personal/zchenbn_connect_ust_hk/ESmSvxTW2cFJuV1vc5Z7H9UB9tgb1rQtttYYVSWj1b0kcg?e=MVFt3g).
 
 ## Training
 
