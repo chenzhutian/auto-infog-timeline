@@ -1,10 +1,56 @@
 # Deep Learning-based Auto-Extraction of Extensible Timeline
 
-This project aims at extracting an extensible template from a bitmap timeline infogrpahic using a deep learning model. This project is builted based on [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark).
+
+## Introduction
+This project, which is going to appear in IEEE VIS 2019, aims at extracting an extensible template from a bitmap timeline infogrpahic using a deep learning model. This project is builted based on [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark).
+You can also check our [project webpage](https://chenzhutian.org/auto-infog-timeline/) from a deeper introduction.
+
+In this repository, we release code and data for training the deep learning model
+in our method.
+
+## Citation
+If you find our work useful in your research, please consider citing:
+```
+@ARTICLE{chen19, 
+  author    = {Zhutian Chen and
+               Yun Wang and
+               Qianwen Wang and
+               Yong Wang and
+               Huamin Qu},
+  title     = {{Towards Automated Infographic Design: Deep Learning-based Auto-Extraction
+               of Extensible Timeline}},
+  journal={{IEEE Transactions on Visualization and Computer Graphics}},
+  year={2018}, 
+  volume={}, 
+  number={}, 
+  pages={1-1}
+}
+```
 
 ## Installation
 
 Check [INSTALL.md](INSTALL.md) for installation instructions.
+
+## Dataset
+The real world timeline dataset we used can be downlowded [here]().
+The dataset contains images of timeline infographics with coco format annotations, 
+divided into `train` and `val`:
+```
+timeline.zip
+  |
+  | - train
+  |     | - coco_format.json // the annotations of the training images
+  |     | - f002.jpg
+  |     | - f002.T.jpg // the rotated f001.jpg
+  |     | ...
+  |
+  | - val
+  |    | - coco_format.json // the annotations of the testing images
+  |    | - f001.jpg
+  |    | ...
+```
+We also provide the single annotation for each image for those who want to re-split
+the images into train and test. The annotations can be downloaded [here]().
 
 ## Training
 
@@ -39,9 +85,9 @@ If you experience out-of-memory errors, you can reduce the global batch size. Bu
 you'll also need to change the learning rate (to half), 
 and the number of iterations (to double).
 
-### Testing Results
-After the training, the programm will conduct an evaluation and output the evaluation results. If you re-run the training without traning the `OUTPUT_DIR`,
-the programm will load the last result in `OUTPUT_DIR` directly run the evaluation code by skiping the training.
+### Testing
+After the training, the programm will conduct an evaluation and output the evaluation results. If you re-run the training without changing the `OUTPUT_DIR`,
+the programm will load the last result in `OUTPUT_DIR` and directly run the evaluation code by skiping the training.
 
 ## Troubleshooting
 If you have issues running or compiling this code, we have compiled a list of common issues in
@@ -49,25 +95,8 @@ If you have issues running or compiling this code, we have compiled a list of co
 free to open a new issue.
 
 ## Note
-
 The code in this repo is under active development.
 Datasets and demos of Jupyter Notebooks will be provided soon.
 
-
-## Citing RuleMatrix
-```
-@ARTICLE{chen19, 
-  author    = {Zhutian Chen and
-               Yun Wang and
-               Qianwen Wang and
-               Yong Wang and
-               Huamin Qu},
-  title     = {Towards Automated Infographic Design: Deep Learning-based Auto-Extraction
-               of Extensible Timeline},
-  journal={IEEE Transactions on Visualization and Computer Graphics}, 
-  year={2018}, 
-  volume={}, 
-  number={}, 
-  pages={1-1}
-}
-```
+## License
+Our code is released under MIT License (see LICENSE file for details).
