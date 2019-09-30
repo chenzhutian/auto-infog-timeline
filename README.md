@@ -4,7 +4,8 @@
 <img src="./demo/intro.gif" width="500">
 
 ## Introduction
-This project, which is going to appear in IEEE VIS 2019, aims at extracting an extensible template from a bitmap timeline infogrpahic using a deep learning model. This project is builted based on [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark).
+This project, which is going to appear in IEEE VIS 2019, aims at extracting an extensible template from a bitmap timeline infogrpahic using a deep learning model. 
+This project is builted based on [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark).
 You can also check our [project webpage](https://chenzhutian.org/auto-infog-timeline/) from a deeper introduction.
 
 In this repository, we release code and data for training the deep learning model
@@ -14,18 +15,13 @@ in our method.
 If you find our work useful in your research, please consider citing:
 ```
 @ARTICLE{chen19, 
-  author    = {Zhutian Chen and
-               Yun Wang and
-               Qianwen Wang and
-               Yong Wang and
-               Huamin Qu},
-  title     = {{Towards Automated Infographic Design: Deep Learning-based Auto-Extraction
-               of Extensible Timeline}},
-  journal={{IEEE Transactions on Visualization and Computer Graphics}},
-  year={2018}, 
-  volume={}, 
-  number={}, 
-  pages={1-1}
+  author  = {Zhutian Chen and Yun Wang and Qianwen Wang and Yong Wang and Huamin Qu},
+  title   = {{Towards Automated Infographic Design: Deep Learning-based Auto-Extraction of Extensible Timeline}},
+  journal = {{IEEE Transactions on Visualization and Computer Graphics}},
+  year    = {2018}, 
+  volume  = {}, 
+  number  = {}, 
+  pages   = {1-1}
 }
 ```
 
@@ -102,7 +98,6 @@ free to open a new issue.
 
 ## Note
 The code in this repo is under active development.
-Datasets and demos of Jupyter Notebooks will be provided soon.
 
 ## License
 Our code is released under MIT License (see LICENSE file for details).
