@@ -1,7 +1,7 @@
 # Deep Learning-based Auto-Extraction of Extensible Timeline
 
 
-<img src="./demo/intro.gif" width="500">
+<img src="./demo/intro_full.gif" width="500">
 
 ## Introduction
 This project, which is going to appear in IEEE VIS 2019, aims at extracting an extensible template from a bitmap timeline infogrpahic using a deep learning model. 
