@@ -6,7 +6,7 @@
 ## Introduction
 This project, which is going to appear in IEEE VIS 2019, aims at extracting an extensible template from a bitmap timeline infogrpahic using a deep learning model. 
 This project is builted based on [maskrcnn-benchmark](https://github.com/facebookresearch/maskrcnn-benchmark).
-You can also check our [project webpage](https://chenzhutian.org/auto-infog-timeline/) from a deeper introduction.
+You can also check our [project webpage](https://chenzhutian.org/auto-infog-timeline/) for more details.
 
 In this repository, we release code and data for training the deep learning model
 in our method.
