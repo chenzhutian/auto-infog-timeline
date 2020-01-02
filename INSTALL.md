@@ -47,7 +47,7 @@ python setup.py install --cuda_ext --cpp_ext
 
 # install PyTorch Detection
 cd $INSTALL_DIR
-git clone https://github.com/xxxxxx
+git clone git@github.com:chenzhutian/auto-infog-timeline.git
 cd xxx
 
 # the following will install the lib with
