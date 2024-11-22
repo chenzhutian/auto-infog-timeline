@@ -15,7 +15,7 @@ in our method.
 If you find our work useful in your research, please consider citing:
 ```
 @ARTICLE{chen19, 
-  author  = {Zhutian Chen and Yun Wang and Qianwen Wang and Yong Wang and Huamin Qu},
+  author  = {Chen Zhu-Tian and Yun Wang and Qianwen Wang and Yong Wang and Huamin Qu},
   title   = {{Towards Automated Infographic Design: Deep Learning-based Auto-Extraction of Extensible Timeline}},
   journal = {{IEEE Transactions on Visualization and Computer Graphics}},
   year    = {2019}, 
